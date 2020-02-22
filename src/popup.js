@@ -3,6 +3,7 @@ const duplicateServer = 'http://localhost:3000'
 const keypointServer = 'http://13.250.46.91:3000'
 
 window.onload = function() {
+
   const $duplicateBtn = document.querySelector('#duplicate');
   const $keypointBtn = document.querySelector('#keypoint');
 
@@ -18,7 +19,7 @@ window.onload = function() {
             },
             body: JSON.stringify({
               "isi_artikel": result.content
-            })
+            }),
           })
         })
         .then(response => response.text())
@@ -36,7 +37,7 @@ window.onload = function() {
           const arr = result.content.split('</p>')
           const regx = /(<([^>]+)>)/ig;
           arr.forEach(el => {
-            if (el && el.indexOf('Baca juga') === -1) {
+            if (el && el.indexOf('Baca juga') === -1 && el.indexOf('Gambas:Video') === -1 && el.indexOf('Simak juga video') === -1 && el.indexOf('TAG:') === -1) {
               let sentence = el.replace(regx , "").trim()
               report.push(sentence)
             }
@@ -49,9 +50,8 @@ window.onload = function() {
             body: JSON.stringify(report)
           })
         })
-        .then(response => {
-          console.log(response.json())
-        })
+        .then(response => response.json())
+        .then(data => console.log(data.redactedArticle))
         .catch(err => console.log(err))
     });
   }

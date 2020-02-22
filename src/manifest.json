@@ -1,22 +1,36 @@
 {
   "manifest_version": 2,
-
-  "name": "Name of your chrome extension",
-  "description": "Description of your chrome extension.",
+  "name": "KeyPoint",
+  "description": "Article summarizer for Chrome",
+  "homepage_url": "https://keypoint.herokuapp.com",
   "version": "0.1",
-
   "browser_action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/get_started16.png",
+      "32": "images/get_started32.png",
+      "48": "images/get_started48.png",
+      "128": "images/get_started128.png"
+    }
   },
-
   "permissions": [
-    "activeTab",
     "tabs"
   ],
-
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
+      "matches": [
+        "*://*.tribunnews.com/*",
+        "*://*.detik.com/*",
+        "*://*.kompas.com/read/*",
+        "*://*.cnnindonesia.com/*",
+        "*://*.cnbcindonesia.com/*",
+        "*://*.liputan6.com/news/read/*",
+        "*://*.okezone.com/read/*",
+        "*://*.kapanlagi.com/*",
+        "*://*.merdeka.com/*",
+        "*://*.tempo.co/read/*"
+
+      ],
       "js": ["build/main.js"]
     }
   ]
