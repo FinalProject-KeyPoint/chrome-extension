@@ -1,21 +1,29 @@
 {
   "manifest_version": 2,
   "name": "KeyPoint",
-  "description": "Article summarizer for Chrome",
-  "homepage_url": "https://keypoint.herokuapp.com",
+  "description": "Summarise articles from your favorite sites and only read what you need",
+  "homepage_url": "https://github.com/",
   "version": "0.1",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "contextMenus",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": ["build/background.js"],
+    "persistent": false
+  },
   "browser_action": {
+    "default_title": "NLP",
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "images/get_started16.png",
-      "32": "images/get_started32.png",
-      "48": "images/get_started48.png",
-      "128": "images/get_started128.png"
+      "16": "images/logo16.png",
+      "32": "images/logo32.png",
+      "48": "images/logo48.png",
+      "128": "images/logo120.png"
     }
   },
-  "permissions": [
-    "tabs"
-  ],
   "content_scripts": [
     {
       "matches": [
@@ -23,15 +31,14 @@
         "*://*.detik.com/*",
         "*://*.kompas.com/read/*",
         "*://*.cnnindonesia.com/*",
-        "*://*.cnbcindonesia.com/*",
         "*://*.liputan6.com/news/read/*",
         "*://*.okezone.com/read/*",
-        "*://*.kapanlagi.com/*",
-        "*://*.merdeka.com/*",
         "*://*.tempo.co/read/*"
-
       ],
       "js": ["build/main.js"]
     }
-  ]
+  ],
+  "icons": {
+    "16": "images/logo16.png"
+  }
 }

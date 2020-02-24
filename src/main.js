@@ -14,7 +14,7 @@ class App extends React.Component {
 // Message Listener function
 chrome.runtime.onMessage.addListener(function(request, sender, response) {
   // If message is injectApp
-  if(request.injectApp) {
+  if(request.injectApp || request.type === 'launchKeypoint') {
     // Inject our app to DOM and send response
     injectApp();
     response({
