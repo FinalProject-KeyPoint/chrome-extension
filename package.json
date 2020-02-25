@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "description": "Description",
   "scripts": {
-    "build": "parcel build src/popup.js src/main.js -d src/build/",
-    "watch": "parcel watch src/popup.js src/main.js -d src/build/"
+    "build": "parcel build src/*.js -d src/build/",
+    "watch": "parcel watch src/*.js -d src/build/"
   },
   "author": "",
   "dependencies": {
